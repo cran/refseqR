@@ -25,10 +25,10 @@ refseq_description(id)
 mrna_gb <- rentrez::entrez_fetch(db= 'nuccore', id = "XM_004487701", rettype = 'gp') 
 strsplit(mrna_gb, "\n")[[1]][1:30]
 
-## -----------------------------------------------------------------------------
-xm = c("XM_004487701", "XM_004488493", "XM_004501904")
-feat = c("caption", "moltype", "sourcedb", "slen", "title")
-refseq_fromXM(xm ,feat)
+## ---- eval = F----------------------------------------------------------------
+#  xm = c("XM_004487701", "XM_004488493", "XM_004501904")
+#  feat = c("caption", "moltype", "sourcedb", "slen", "title")
+#  refseq_fromXM(xm ,feat)
 
 ## -----------------------------------------------------------------------------
 xm <- "XM_004487701"
@@ -55,7 +55,7 @@ xp <- "XP_020244413"
 refseq_XMfromXP(xp)
 
 ## -----------------------------------------------------------------------------
-refseq_XPlength(xp)
+refseq_XPlength(xp, retries = 3)
 refseq_mol_wt(xp)
 
 ## -----------------------------------------------------------------------------

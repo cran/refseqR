@@ -220,13 +220,7 @@ The protein id(s) for LOC105852298 = XP_027191735, XP_012572651.</p>
 <p>The <code>refseq_fromXM</code> function serves as a wrapper built on top of ‘entrez_summary’ from the ‘rentrez’ package, designed to extract specific features from the obtained data. Typically, my focus lies on key features like id, accession, title, update, or sequence length (bp). However, you have the flexibility to tailor the function to extract additional features of interest from the <code>esummary_list</code> object.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>xm <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;XM_004487701&quot;</span>, <span class="st">&quot;XM_004488493&quot;</span>, <span class="st">&quot;XM_004501904&quot;</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>feat <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;caption&quot;</span>, <span class="st">&quot;moltype&quot;</span>, <span class="st">&quot;sourcedb&quot;</span>, <span class="st">&quot;slen&quot;</span>, <span class="st">&quot;title&quot;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_fromXM</span>(xm ,feat)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 5</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   caption      moltype sourcedb slen  title                                     </span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;                                     </span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 XM_004487701 rna     refseq   2927  PREDICTED: Cicer arietinum aldehyde dehyd…</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 XM_004488493 rna     refseq   1962  PREDICTED: Cicer arietinum succinate-semi…</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 XM_004501904 rna     refseq   2492  PREDICTED: Cicer arietinum betaine aldehy…</span></span></code></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_fromXM</span>(xm ,feat)</span></code></pre></div>
 <p>Another interesting function is <code>refseq_XPfromXM</code>, which retrieves the protein accession associated with the provided mRNA.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>xm <span class="ot">&lt;-</span> <span class="st">&quot;XM_004487701&quot;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_XPfromXM</span>(xm)</span>
@@ -269,7 +263,7 @@ The protein id(s) for LOC105852298 = XP_027191735, XP_012572651.</p>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_XMfromXP</span>(xp)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;XM_020388824&quot;</span></span></code></pre></div>
 <p>Two specific functions prove useful for managing protein accessions: <code>refseq_XPlength</code> offers the amino acid length of the sequence, while <code>refseq_mol.wt</code> provides the molecular weight in Daltons.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_XPlength</span>(xp)</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_XPlength</span>(xp, <span class="at">retries =</span> <span class="dv">3</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 917</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_mol_wt</span>(xp)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 104178</span></span></code></pre></div>
@@ -307,7 +301,7 @@ The protein id(s) for LOC105852298 = XP_027191735, XP_012572651.</p>
 </ul>
 <p>I’d really appreciate your feedback. The whole code used in this tutorial is available from my <strong><a href="https://github.com/jdieramon">Github</a></strong> repository. You can contact me by <strong><a href="mailto:jose.die@uco.es">email</a></strong> or visit my <strong><a href="https://jdieramon.github.io">website</a></strong>.</p>
 <p>   </p>
-<p>Córdoba, (Spain), 2024-03-30.</p>
+<p>Córdoba, (Spain), 2024-05-15.</p>
 </div>
 </div>
 
