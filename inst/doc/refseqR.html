@@ -164,20 +164,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="geneid" class="section level2">
 <h2>1. GeneID</h2>
-<p>Given a gene symbol obtained from the ‘Gene’ database, the <code>refseqR</code> library enables us to retrieve the associated mRNA and protein accessions.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gene_symbol <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;LOC101512347&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>transcript <span class="ot">&lt;-</span> <span class="fu">refseq_fromGene</span>(gene_symbol, <span class="at">sequence =</span> <span class="st">&quot;XM&quot;</span>, <span class="at">retries =</span> <span class="dv">3</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">refseq_fromGene</span>(gene_symbol, <span class="at">sequence =</span> <span class="st">&quot;XP&quot;</span>, <span class="at">retries =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p>Given a gene symbol/name obtained from the ‘Gene’ database, the <code>refseqR</code> library enables us to retrieve the associated mRNA and protein accessions.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>GeneID <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;LOC101512347&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>transcript <span class="ot">&lt;-</span> <span class="fu">refseq_fromGene</span>(GeneID, <span class="at">sequence =</span> <span class="st">&quot;transcript&quot;</span>, <span class="at">retries =</span> <span class="dv">4</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">refseq_fromGene</span>(GeneID, <span class="at">sequence =</span> <span class="st">&quot;protein&quot;</span>, <span class="at">retries =</span> <span class="dv">4</span>)</span></code></pre></div>
 <p>The mRNA transcript identifier (id) for LOC101512347 = XM_004487701.</p>
 <p>The protein identifier (id) for LOC101512347 = XP_004487758.</p>
 <p> </p>
 <p>Similarly, the function is effective when utilizing gene symbols that encode for multiple transcripts.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gene_symbol <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;LOC105852298&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>transcript <span class="ot">&lt;-</span> <span class="fu">refseq_fromGene</span>(gene_symbol, <span class="at">sequence =</span> <span class="st">&quot;XM&quot;</span>, <span class="at">retries =</span> <span class="dv">3</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">refseq_fromGene</span>(gene_symbol, <span class="at">sequence =</span> <span class="st">&quot;XP&quot;</span>, <span class="at">retries =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>GeneID <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;LOC105852298&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>transcript <span class="ot">&lt;-</span> <span class="fu">refseq_fromGene</span>(GeneID, <span class="at">sequence =</span> <span class="st">&quot;transcript&quot;</span>, <span class="at">retries =</span> <span class="dv">4</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>protein    <span class="ot">&lt;-</span> <span class="fu">refseq_fromGene</span>(GeneID, <span class="at">sequence =</span> <span class="st">&quot;protein&quot;</span>, <span class="at">retries =</span> <span class="dv">4</span>)</span></code></pre></div>
 <p>The mRNA transcript id(s) for LOC105852298 = XM_027335934, XM_012717197.<br />
 The protein id(s) for LOC105852298 = XP_027191735, XP_012572651.</p>
-<p>The function <code>refseq_description</code> returns the sequence description corresponding to a given accession. The identifier (id) can be either a XM, XP, or Gene identifier</p>
+<p>The function <code>refseq_description</code> returns the sequence description corresponding to a given accession. The identifier (id) can be either a transcript, protein, or Gene identifier.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;LOC101512347&quot;</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_description</span>(id)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;aldehyde dehydrogenase 22A1&quot;</span></span></code></pre></div>
@@ -217,27 +217,27 @@ The protein id(s) for LOC105852298 = XP_027191735, XP_012572651.</p>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [28] &quot;                                           102&quot;                                 </span></span>
 <span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [29] &quot;            Annotation Version          :: 102&quot;                                 </span></span>
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [30] &quot;            Annotation Pipeline         :: NCBI eukaryotic genome annotation&quot;</span></span></code></pre></div>
-<p>The <code>refseq_fromXM</code> function serves as a wrapper built on top of ‘entrez_summary’ from the ‘rentrez’ package, designed to extract specific features from the obtained data. Typically, my focus lies on key features like id, accession, title, update, or sequence length (bp). However, you have the flexibility to tailor the function to extract additional features of interest from the <code>esummary_list</code> object.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>xm <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;XM_004487701&quot;</span>, <span class="st">&quot;XM_004488493&quot;</span>, <span class="st">&quot;XM_004501904&quot;</span>)</span>
+<p>The <code>refseq_mRNAfeat</code> function serves as a wrapper built on top of <code>entrez_summary</code> from the <code>rentrez</code> package, designed to extract specific features from the obtained data. Typically, my focus lies on key features like id, accession, title, update, or sequence length (bp). However, you have the flexibility to tailor the function to extract additional features of interest from the <code>esummary_list</code> object.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>transcript <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;XM_004487701&quot;</span>, <span class="st">&quot;XM_004488493&quot;</span>, <span class="st">&quot;XM_004501904&quot;</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>feat <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;caption&quot;</span>, <span class="st">&quot;moltype&quot;</span>, <span class="st">&quot;sourcedb&quot;</span>, <span class="st">&quot;slen&quot;</span>, <span class="st">&quot;title&quot;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_fromXM</span>(xm ,feat)</span></code></pre></div>
-<p>Another interesting function is <code>refseq_XPfromXM</code>, which retrieves the protein accession associated with the provided mRNA.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>xm <span class="ot">&lt;-</span> <span class="st">&quot;XM_004487701&quot;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_XPfromXM</span>(xm)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_mRNAfeat</span>(transcript ,feat)</span></code></pre></div>
+<p>Another interesting function is <code>refseq_mRNA2protein</code>, which retrieves the protein accession associated with the provided mRNA.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>transcript <span class="ot">&lt;-</span> <span class="st">&quot;XM_004487701&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_mRNA2protein</span>(transcript)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;XP_004487758&quot;</span></span></code></pre></div>
 <p>The CDS coordinates come in handy when we want to get the fasta sequence. We sometimes do not want the 5’UTR or 3’UTR contained in the mRNA sequence and are interested just in the CDS.</p>
-<p>The function <code>refseq_CDScoords</code> creates an <code>IRanges</code> object with the CDS coordinates from an mRNA accession. The output object is the basis for <code>refseq_CDSseq</code>, which fetches the NCBI data, uses that coordinates and retuns a <code>DNAString</code> object with the CDS nucleotide sequence.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_CDScoords</span>(xm)</span>
+<p>The function <code>refseq_CDScoords</code> creates an <code>IRanges</code> object with the CDS coordinates from an mRNA accession. The output object is the basis for <code>refseq_CDSseq</code>, which fetches the NCBI data, uses that coordinates and returns a <code>DNAString</code> object with the CDS nucleotide sequence.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_CDScoords</span>(transcript)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; IRanges object with 1 range and 0 metadata columns:</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                      start       end     width</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   XM_004487701.3       670      2457      1788</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_CDSseq</span>(xm)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_CDSseq</span>(transcript)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DNAStringSet object of length 1:</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     width seq                                               names               </span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  1788 ATGGCGTTTTGGTGGTCTTTGCT...GTGGCAATAAGAAGGAGAAATGA XM_004487701.3</span></span></code></pre></div>
 <p>Here, the first 500 nucleotides of the mRNA ‘XM_004487701’:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mrna_fasta <span class="ot">=</span> rentrez<span class="sc">::</span><span class="fu">entrez_fetch</span>(<span class="at">db=</span><span class="st">&quot;nuccore&quot;</span>, <span class="at">id=</span>xm, <span class="at">rettype=</span><span class="st">&quot;fasta&quot;</span>)</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mrna_fasta <span class="ot">=</span> rentrez<span class="sc">::</span><span class="fu">entrez_fetch</span>(<span class="at">db=</span><span class="st">&quot;nuccore&quot;</span>, <span class="at">id=</span>transcript, <span class="at">rettype=</span><span class="st">&quot;fasta&quot;</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># take a look at the first 500 chars. </span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">strwrap</span>(<span class="fu">substr</span>(mrna_fasta, <span class="dv">1</span>, <span class="dv">500</span>)), <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &gt;XM_004487701.3 PREDICTED: Cicer arietinum aldehyde dehydrogenase 22A1</span></span>
@@ -249,59 +249,59 @@ The protein id(s) for LOC105852298 = XP_027191735, XP_012572651.</p>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TCTTCTTGGAACCGATAAAGTCGTAGTTTATTCCTTTCTCAATTTGATGAAAAGTGCAAACTTGGAAAAG</span></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AAAACAGGTTCACCTTTGAACTCAAATAAACAAGTACTACAATATCAAAACCC</span></span></code></pre></div>
 <p>Here, the first 60 nucleotides of the CDS from the mRNA ‘XM_004487701’:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(<span class="fu">toString</span>(<span class="fu">refseq_CDSseq</span>(xm)), <span class="dv">1</span>, <span class="dv">60</span>)</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(<span class="fu">toString</span>(<span class="fu">refseq_CDSseq</span>(transcript)), <span class="dv">1</span>, <span class="dv">60</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ATGGCGTTTTGGTGGTCTTTGCTCGTTCTAGCATTCGCTTTCGCTATCTGCAAGTTCCTT&quot;</span></span></code></pre></div>
-<p>As previously said, the function <code>refseq_description</code> returns the sequence description corresponding to a given accession. The identifier (id) can be either a XM, XP, or Gene identifier</p>
+<p>As previously said, the function <code>refseq_description</code> returns the sequence description corresponding to a given accession. The identifier (id) can be either a transcript, protein, or Gene identifier.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">&quot;XM_004487701&quot;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_description</span>(id)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;aldehyde dehydrogenase 22A1&quot;</span></span></code></pre></div>
 </div>
 <div id="protein" class="section level2">
 <h2>3. Protein</h2>
-<p>Similarly to nucleotide sequences, <code>refseq_XMfromXP</code>, retrieves the mRNA associated with the provided protein accession.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>xp <span class="ot">&lt;-</span> <span class="st">&quot;XP_020244413&quot;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_XMfromXP</span>(xp)</span>
+<p>Similarly to nucleotide sequences, <code>refseq_protein2mRNA</code>, retrieves the mRNA associated with the provided protein accession.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="st">&quot;XP_020244413&quot;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_protein2mRNA</span>(protein)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;XM_020388824&quot;</span></span></code></pre></div>
-<p>Two specific functions prove useful for managing protein accessions: <code>refseq_XPlength</code> offers the amino acid length of the sequence, while <code>refseq_mol.wt</code> provides the molecular weight in Daltons.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_XPlength</span>(xp, <span class="at">retries =</span> <span class="dv">3</span>)</span>
+<p>Two specific functions prove useful for managing protein accessions: <code>refseq_AA_length</code> offers the amino acid length of the sequence, while <code>refseq_mol.wt</code> provides the molecular weight in Daltons.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_AA_length</span>(protein, <span class="at">retries =</span> <span class="dv">4</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 917</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_mol_wt</span>(xp)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_AA_mol_wt</span>(protein)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 104178</span></span></code></pre></div>
-<p>The <code>refseq_AAseq</code> function, fetches the NCBI data, and retuns a <code>DNAString</code> object with the amino acid sequence.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_AAseq</span>(xp)</span>
+<p>The <code>refseq_AAseq</code> function, fetches the NCBI data, and returns a <code>DNAString</code> object with the amino acid sequence.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_AAseq</span>(protein)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AAStringSet object of length 1:</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     width seq                                               names               </span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]   917 MSTRRVRKTKGKIPKKKISVEKL...SMGPDWHKVEHIPSLMIDPTTGE XP_020244413</span></span></code></pre></div>
-<p>As previously mentioned, the <code>refseq_description</code> function ultimately provides the sequence description associated with a given accession. The identifier (id) can take the form of either an gene, XM, or XP identifier.</p>
+<p>As previously mentioned, the <code>refseq_description</code> function ultimately provides the sequence description associated with a given accession. The identifier (id) can take the form of either a transcript, protein, or Gene identifier.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">&quot;XP_020244413&quot;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">refseq_description</span>(id)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;probable disease resistance protein At1g58602&quot;</span></span></code></pre></div>
 <div id="concluding-remarks" class="section level3">
 <h3>4. Concluding Remarks</h3>
 <p>The package <code>refseqR</code> contains a number of functions to programmatically automatize some common operations.</p>
-<p>Functions to apply on gene id. accessions</p>
+<p>Functions to apply on GeneID accessions</p>
 <ul>
 <li><code>refseq_description</code></li>
 <li><code>refseq_fromGene</code></li>
 </ul>
-<p>Functions to apply on mRNA id. accessions</p>
+<p>Functions to apply on transcript id. accessions</p>
 <ul>
-<li><code>refseq_geneSymbol</code></li>
+<li><code>refseq_GeneID</code></li>
 <li><code>refseq_CDScoords</code></li>
 <li><code>refseq_CDSseq</code></li>
-<li><code>refseq_XPfromXM</code></li>
+<li><code>refseq_mRNA2protein</code></li>
 </ul>
 <p>Functions to apply on protein id. accessions</p>
 <ul>
-<li><code>refseq_geneSymbol</code></li>
+<li><code>refseq_GeneID</code></li>
 <li><code>refseq_AAseq</code></li>
-<li><code>refseq_mol_wt</code></li>
-<li><code>refseq_XPlength</code></li>
-<li><code>refseq_XMfromXP</code></li>
+<li><code>refseq_AA_mol_wt</code></li>
+<li><code>refseq_AA_length</code></li>
+<li><code>refseq_protein2mRNA</code></li>
 </ul>
 <p>I’d really appreciate your feedback. The whole code used in this tutorial is available from my <strong><a href="https://github.com/jdieramon">Github</a></strong> repository. You can contact me by <strong><a href="mailto:jose.die@uco.es">email</a></strong> or visit my <strong><a href="https://jdieramon.github.io">website</a></strong>.</p>
 <p>   </p>
-<p>Córdoba, (Spain), 2024-05-15.</p>
+<p>Córdoba, (Spain), 2024-07-10.</p>
 </div>
 </div>
 
