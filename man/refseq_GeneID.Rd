@@ -26,15 +26,15 @@ Depending on the function, available accessions in \code{refseqR} include RefSeq
 transcript = c("XM_004487701", "XM_004488493")
 sapply(transcript, function(x) refseq_GeneID (x, db = "nuccore", retries = 4), USE.NAMES = FALSE)
 
-# Get the gene symbol from a set of XP accessions
+# Get the gene symbol from a set of protein accessions
 protein = c("XP_004487758")
 sapply(protein, function(x) refseq_GeneID (x, db = "protein", retries = 4), USE.NAMES = FALSE)
 
 }
 \seealso{
-\code{\link{refseq_protein2mRNA}} to obtain the transcript accessions that encode a set of protein accessions.
+\code{\link{refseq_protein2RNA}} to obtain the transcript accessions that encode a set of protein accessions.
 
-\code{\link{refseq_mRNA2protein}} to obtain the protein accessions encoded by a set of transcript accessions.
+\code{\link{refseq_RNA2protein}} to obtain the protein accessions encoded by a set of transcript accessions.
 }
 \author{
 Jose V. Die
